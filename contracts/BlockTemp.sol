@@ -47,6 +47,11 @@ contract BlockTemp {
     return (a <= 0) ? (0 - a) : a;
   }
 
+  function cleanCache() private {
+    delete tempCache;
+    delete addrCache;
+  }
+
   /**
     * @notice mergeTemp is used to merge temperature with fixed time interval merge. 
     * point is a rule to reward and punish temperature providing nodes
@@ -81,6 +86,7 @@ contract BlockTemp {
     }
 
     // clear tempCache and addrCache
+    cleanCache();
     emit tempUpdate(lastId, _temp.temp);
   }
 
