@@ -37,14 +37,14 @@ contract BlockTemp {
     * @return temp result.
     */
   function getLastTemp() view public returns (uint) {
-    return tempData[lastId];
+    return tempData[lastId].temp;
   }
 
   /**
     * @notice getABS is used to get the absolute value of a number
     */
-  function getABS(int a) private returns(uint) {
-    return a <= 0 ? 0 - a : a;
+  function getABS(uint a) private pure returns(uint) {
+    return (a <= 0) ? (0 - a) : a;
   }
 
   /**
